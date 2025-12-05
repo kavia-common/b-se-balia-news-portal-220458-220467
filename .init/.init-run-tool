@@ -1,0 +1,4 @@
+{
+    "command": "PORT=<port> HOST=<host> BROWSER=none npm start",
+    "working_directory": "/home/kavia/workspace/code-generation/b-se-balia-news-portal-220458-220467/b_se_balia_frontend"
+}
