@@ -1,0 +1,16 @@
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-6);
+}
+@media (max-width: 1024px) {
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+  .sidebar-area {
+    order: 2;
+  }
+}
+.content-area {
+  min-width: 0;
+}

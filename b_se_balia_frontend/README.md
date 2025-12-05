@@ -1,82 +1,58 @@
-# Lightweight React Template for KAVIA
+# B se Balia – Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Modern React frontend for the B se Balia news portal. Built with Create React App, plain CSS, and a small component set. Ocean Professional theme (blue/amber accents), subtle gradients, rounded corners, and minimal shadows.
 
-## Features
+## Quick Start
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+1) Install
+- npm install
 
-## Getting Started
+2) Configure environment
+- Copy .env.example to .env and adjust vars (Create React App requires REACT_APP_ prefix)
+- For mock data (no backend): leave REACT_APP_API_BASE empty or set REACT_APP_FEATURE_FLAGS=mockApi=true
 
-In the project directory, you can run:
+3) Run
+- npm start
+- Open http://localhost:3000
 
-### `npm start`
+## Routes
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- / – Home (featured carousel, trending banner, latest grid)
+- /article/:slug – Article details with related items
+- /category/:slug – Filtered list by category
+- /trending – Trending articles list
+- /about – About page
 
-### `npm test`
+## Theme
 
-Launches the test runner in interactive watch mode.
+- Palette: primary #2563EB, secondary/success #F59E0B, error #EF4444
+- Background #f9fafb, Surface #ffffff, Text #111827
+- Subtle gradient utility: from blue-500/10 to gray-50
+- Light/dark mode toggle in header
 
-### `npm run build`
+CSS variables defined in src/styles/theme.css, utilities in src/styles/utilities.css.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Data Layer
 
-## Customization
+- Axios client configured in src/api/client.js (timeout, headers, error normalization)
+- Endpoints in src/api/endpoints.js
+- useFetch hook with cancellation and retry in src/hooks/useFetch.js
+- Feature flags in src/hooks/useFeatureFlags.js
+- Contexts: UIThemeProvider (theme) and AppProvider (cache: categories/trending)
 
-### Colors
+### Mock Fallback
+If REACT_APP_API_BASE is empty or REACT_APP_FEATURE_FLAGS includes mockApi=true,
+src/api/mock.js serves featured, trending, categories, and articles.
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+## Environment Variables
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+See .env.example for all supported REACT_APP_* variables:
+- REACT_APP_API_BASE, REACT_APP_BACKEND_URL, REACT_APP_FRONTEND_URL, REACT_APP_WS_URL,
+  REACT_APP_NODE_ENV, REACT_APP_NEXT_TELEMETRY_DISABLED, REACT_APP_ENABLE_SOURCE_MAPS,
+  REACT_APP_PORT, REACT_APP_TRUST_PROXY, REACT_APP_LOG_LEVEL, REACT_APP_FEATURE_FLAGS,
+  REACT_APP_EXPERIMENTS_ENABLED
 
-### Components
+## Notes
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- No UI framework; components are accessible and keyboard-friendly.
+- Minimal dependencies: react-router-dom, axios.
